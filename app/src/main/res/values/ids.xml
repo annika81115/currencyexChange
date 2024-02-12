@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="input2" type="id" />
+    <item name="input1" type="id" />
+
+    <string-array name="currency">
+        <item>Euro</item>
+        <item>hdjshdj</item>
+        <item>hdjwljdjad</item>
+    </string-array>
+</resources>
