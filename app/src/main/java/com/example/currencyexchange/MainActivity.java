@@ -24,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
-    EditText input1;
-    EditText input2;
+    public String firstSpinnerText;
+
+
+    public EditText input1;
+    public EditText input2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +37,17 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSpinner(R.id.firstSpinner);
+        setSpinner(R.id.secondSpinner);
+
+
+
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //getSpinner(R.id.firstSpinner);
+                Snackbar.make(view, "Replace with your own action"+firstSpinnerText, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -57,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
         //input1 = (EditText) findViewById(R.id.input1);
         //input2 = (EditText) findViewById(R.id.input2);
 
-        setSpinner(R.id.firstSpinner);
-        setSpinner(R.id.secondSpinner);
+
     }
 
     @Override
@@ -88,4 +96,9 @@ public class MainActivity extends AppCompatActivity {
         // Apply the adapter to the spinner.
         secondSpinner.setAdapter(secondSpinnerAdapter);
     }
+
+    /**public void getSpinner(int pSpinnerId){
+        Spinner pSpinner = (Spinner) findViewById(pSpinnerId);
+        firstSpinnerText = pSpinner.getSelectedItem().toString();
+    }**/
 }

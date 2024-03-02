@@ -5,7 +5,8 @@
 
     <string-array name="currency">
         <item>Euro</item>
-        <item>hdjshdj</item>
-        <item>hdjwljdjad</item>
+        <item>1. Währung</item>
+        <item>2. Währung</item>
+        <item>3. Währung</item>
     </string-array>
 </resources>
