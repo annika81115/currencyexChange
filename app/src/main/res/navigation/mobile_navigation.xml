@@ -13,13 +13,8 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.currencyexchange.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:name="com.example.currencyexchange.ui.info.InfoFragment"
+        android:label="@string/menu_info"
+        tools:layout="@layout/fragment_info" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.currencyexchange.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>

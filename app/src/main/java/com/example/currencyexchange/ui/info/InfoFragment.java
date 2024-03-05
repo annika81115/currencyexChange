@@ -1,4 +1,4 @@
-package com.example.currencyexchange.ui.gallery;
+package com.example.currencyexchange.ui.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.currencyexchange.databinding.FragmentGalleryBinding;
+import com.example.currencyexchange.databinding.FragmentInfoBinding;
+import com.example.currencyexchange.databinding.FragmentInfoBinding;
 
-public class GalleryFragment extends Fragment {
+public class InfoFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private FragmentInfoBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        InfoViewModel infoViewModel =
+                new ViewModelProvider(this).get(InfoViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        infoViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

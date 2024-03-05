@@ -19,45 +19,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209"
-        style="@style/TextColor"/>
+        app:layout_constraintVertical_bias="0.209" />
 
     <EditText
         android:id="@+id/input1"
         android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="300dp"
         android:autofillHints=""
         android:ems="10"
         android:inputType="numberDecimal"
         android:labelFor="@id/firstSpinner"
         app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/input2"
-        android:layout_width="130dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="328dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="number"
-        android:labelFor= "@id/secondSpinner"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <Spinner
-        android:id="@+id/secondSpinner"
-        android:layout_width="130dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="268dp"
-        app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,10 +39,32 @@
         android:id="@+id/changeSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="240dp"
         android:contentDescription="The Button to swap the items"
         android:src="@android:drawable/ic_popup_sync"
         app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:contentDescription="@string/button_to_submit"
+        android:src="@android:drawable/ic_menu_send"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/secondSpinner"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="240dp"
+        app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -78,8 +73,22 @@
         android:id="@+id/firstSpinner"
         android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="240dp"
         app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/input2"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="300dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="number"
+        android:labelFor="@id/secondSpinner"
+        app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -99,19 +108,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118"
-        style="@style/TextColor"/>
-
-    <ImageButton
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="328dp"
-        android:src="@android:drawable/ic_menu_send"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/button_to_submit" />
+        app:layout_constraintVertical_bias="0.118" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
