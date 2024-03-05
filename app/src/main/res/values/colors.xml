@@ -10,4 +10,7 @@
     <color name="babyblue">#71A3EF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFF8F8</color>
+    <color name="darkGrey">#aaa</color>
+    <color name="lavendel">#1478EC</color>
+    <color name="textGrey">#B7B9C7</color>
 </resources>

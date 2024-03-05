@@ -1,7 +1,6 @@
 package com.example.currencyexchange.ui.home;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
-
-import com.example.currencyexchange.ui.home.logic;
 
 import java.util.Objects;
 

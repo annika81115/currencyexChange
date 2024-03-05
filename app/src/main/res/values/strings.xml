@@ -2,8 +2,8 @@
     <string name="app_name">currencyexChange</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Currency Exchange</string>
+    <string name="nav_header_subtitle">Dein Gefühl für Geld!</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -13,4 +13,5 @@
     <string name="number_one">number one</string>
     <string name="number_two">number two</string>
     <string name="home_text1">Der aktuelle Wärungskurs beträgt</string>
+    <string name="button_to_submit">Button to submit</string>
 </resources>
