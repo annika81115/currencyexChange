@@ -11,7 +11,8 @@
     <string name="menu_info">Info</string>
     <string name="number_one">number one</string>
     <string name="number_two">number two</string>
-    <string name="home_text1">Der aktuelle Wärungskurs beträgt</string>
+    <string name="home_text1">Der aktuelle Wechselkurs beträgt</string>
     <string name="button_to_submit">Button to submit</string>
     <string name="info">Info</string>
+    <string name="doener">"Gib erst einen Wert zum Umrechnen ein! Dann wirst du erfahren, wie viele Döner es Wert ist!"</string>
 </resources>

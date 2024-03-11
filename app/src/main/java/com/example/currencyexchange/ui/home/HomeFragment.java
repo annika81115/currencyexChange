@@ -28,7 +28,9 @@ public class HomeFragment extends Fragment {
 
     private EditText input2;
 
-    private double exchangeRate = 1.5 ;
+    private double exchangeRate = 0.00004409 ;
+
+    private double doenerPrice = 6.5;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,25 +62,37 @@ public class HomeFragment extends Fragment {
         binding.firstSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        getExchangeRate();
+                        getExchangeRate(id);
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
-
 
         binding.secondSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        getExchangeRate();
+                        getExchangeRate(id);
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
-
         return root;
     }
 
+    void setExchangeRate(String pExchangeRate){
+        TextView textView = (TextView) getView().findViewById(R.id.text_home);
+        textView.setText(pExchangeRate);
+    }
+
+    void setExplanation(String pExplanation){
+        TextView textView = (TextView) getView().findViewById(R.id.text_explanation);
+        textView.setText(pExplanation);
+    }
+
+    void setDoenerValue(String pDoenerValue){
+        TextView textView = (TextView) getView().findViewById(R.id.text_doener);
+        textView.setText("Der eingegebene Wert entspricht ca. " + pDoenerValue + " Döner zu einem Preis von 6.50 Euro.");
+    }
 
     @Override
     public void onDestroyView() {
@@ -89,15 +103,22 @@ public class HomeFragment extends Fragment {
     private void exchange(View view){
         input1 = (EditText) getView().findViewById(R.id.input1);
         if (input1.getText().toString().trim().length() > 0) {
-            getExchangeRate();
+            //getExchangeRate();
             double result = calculate(exchangeRate);
             String result2 = String.valueOf(result);
             setText(R.id.input2, result2);
+            String doenerValue = getDoenerValue(result);
+            setDoenerValue(doenerValue);
         }else {
             Snackbar.make(view, "Gebe bitte erst eine Zahl ein!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
             setText(R.id.input2, "");
         }
+    }
+
+    private String getDoenerValue(double pResult) {
+        double doenerValue = round(pResult/ doenerPrice, 2);
+        return String.valueOf(doenerValue);
     }
 
     private void changeSides(){
@@ -113,8 +134,8 @@ public class HomeFragment extends Fragment {
         setSpinner(R.id.secondSpinner, spinner1);
     }
 
-    private double getExchangeRate() {
-        double result = 1.5;
+    private double getExchangeRate(long id) {
+        double result = 0;
         String currency1 = getSpinner(R.id.firstSpinner);
         String currency2 = getSpinner(R.id.secondSpinner);
         if (!Objects.equals(currency1, currency2)){
@@ -140,6 +161,7 @@ public class HomeFragment extends Fragment {
         return spinner.getSelectedItem().toString();
     }
 
+
     public void setText(int pTextId, String pText){
         EditText input = (EditText) getView().findViewById(pTextId);
         input.setText(pText);
@@ -153,6 +175,15 @@ public class HomeFragment extends Fragment {
 
     private double calculate(double pExchangeRate){
         double zahl1 = Double.parseDouble(input1.getText().toString());
-        return zahl1 * pExchangeRate;
+        return round(zahl1 * pExchangeRate, 2);
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }

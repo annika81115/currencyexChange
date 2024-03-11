@@ -2,11 +2,4 @@
 <resources>
     <item name="input2" type="id" />
     <item name="input1" type="id" />
-
-    <string-array name="currency">
-        <item>Euro</item>
-        <item>1. Währung</item>
-        <item>2. Währung</item>
-        <item>3. Währung</item>
-    </string-array>
 </resources>

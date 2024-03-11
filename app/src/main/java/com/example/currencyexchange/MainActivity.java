@@ -47,15 +47,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        switchMode = findViewById(R.id.switchMode);
-
-        sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE);
-        nightMode = sharedPreferences.getBoolean("nightMode", false);
-
-        if (nightMode){
-            switchMode.setChecked(true);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
+        setDarkModeSettings();
 
         switchMode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //getSpinner(R.id.firstSpinner);
-                Snackbar.make(view, "Replace with your own action"+firstSpinnerText, Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -96,10 +88,18 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
 
-        //input1 = (EditText) findViewById(R.id.input1);
-        //input2 = (EditText) findViewById(R.id.input2);
+    private void setDarkModeSettings() {
+        switchMode = findViewById(R.id.switchMode);
 
+        sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean("nightMode", false);
+
+        if (nightMode){
+            switchMode.setChecked(true);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
 
     }
 
@@ -131,8 +131,4 @@ public class MainActivity extends AppCompatActivity {
         secondSpinner.setAdapter(secondSpinnerAdapter);
     }
 
-    /**public void getSpinner(int pSpinnerId){
-        Spinner pSpinner = (Spinner) findViewById(pSpinnerId);
-        firstSpinnerText = pSpinner.getSelectedItem().toString();
-    }**/
 }
