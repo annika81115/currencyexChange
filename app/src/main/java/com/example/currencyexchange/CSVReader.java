@@ -5,6 +5,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,10 +20,10 @@ public class CSVReader {
 
     static ArrayList<String> exchangeRates = new ArrayList<>();
 
-    public static void readCSVToSpinner(Context context, Spinner spinner, Spinner secondSpinner, InputStream inputStream) {
+    public static void readCSVToSpinner(Context context, Spinner spinner, Spinner secondSpinner, String inputStream) {
 
         currencies.add("Euro");
-        parseCSVtoArray(inputStream, 2);
+        parseCSVtoArray(new File(inputStream), 2);
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -33,13 +35,14 @@ public class CSVReader {
         secondSpinner.setSelection(1);
     }
 
+
     public void getExchangeRates(InputStream pInputStream){
-        parseCSVtoArray(pInputStream, 3);
+        //parseCSVtoArray(pInputStream, 3);
     }
 
-    private static void parseCSVtoArray(InputStream pInputStream, int pColumnToRead){
+    private static void parseCSVtoArray(File pInputStream, int pColumnToRead){
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(pInputStream));
+            BufferedReader br = new BufferedReader(new FileReader(pInputStream));
 
             br.readLine();
 
