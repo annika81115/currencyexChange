@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
@@ -23,6 +24,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.currencyexchange.databinding.ActivityMainBinding;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
         setDarkModeSettings();
 
+        InputStream inputStream = getResources().openRawResource(R.raw.output);
+        CSVReader.readCSVToSpinner(this, findViewById(R.id.firstSpinner), findViewById(R.id.secondSpinner), inputStream);
+
+
         switchMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,9 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setSpinner(R.id.firstSpinner);
-        setSpinner(R.id.secondSpinner);
-
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +86,10 @@ public class MainActivity extends AppCompatActivity {
                 //getSpinner(R.id.firstSpinner);
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -130,5 +143,7 @@ public class MainActivity extends AppCompatActivity {
         // Apply the adapter to the spinner.
         secondSpinner.setAdapter(secondSpinnerAdapter);
     }
+
+
 
 }
