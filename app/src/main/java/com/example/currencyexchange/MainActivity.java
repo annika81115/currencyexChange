@@ -4,9 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -28,8 +27,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.currencyexchange.databinding.ActivityMainBinding;
 
 import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         DownloadFileTask downloadTask = new DownloadFileTask(MainActivity.this, "http://194.164.56.173:1234/csv");
         downloadTask.execute();
 
-
+        this.readAndPrintCsvFile();
 
     }
 
@@ -151,5 +152,31 @@ public class MainActivity extends AppCompatActivity {
         // Apply the adapter to the spinner.
         secondSpinner.setAdapter(secondSpinnerAdapter);
     }
+
+    public void readAndPrintCsvFile() {
+        // Construct the full file path
+        String fileName = "values.csv";
+        File file = new File(MainActivity.this.getFilesDir(), fileName);
+
+        // Read the CSV file
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Print each line to logcat
+                Log.d("CSVReader", line);
+            }
+
+            br.close();
+            isr.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
