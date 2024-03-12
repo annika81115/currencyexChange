@@ -28,9 +28,14 @@ import com.example.currencyexchange.databinding.ActivityMainBinding;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -105,12 +110,7 @@ public class MainActivity extends AppCompatActivity {
         // still testing
         // this part is for downloading the file
         // maybe need some improvement
-        DownloadFileTask downloadTask = new DownloadFileTask(MainActivity.this, "http://194.164.56.173:1234/csv");
-        downloadTask.execute();
-
-        Log.d("CSVReader", "Between download and read");
-
-        this.readAndPrintCsvFile();
+        this.updateValues();
 
     }
 
@@ -181,5 +181,70 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void updateValues() {
+
+        if(isUpdateNeeded()) {
+            DownloadFileTask downloadTask = new DownloadFileTask(MainActivity.this, "http://194.164.56.173:1234/csv");
+            downloadTask.execute();
+            Log.d("CSVReader", "Between download and read");
+            this.readAndPrintCsvFile();
+
+            updateLatestUpdateDate();
+        }
+
+
+    }
+
+
+    private boolean isUpdateNeeded() {
+
+        File lastUpdateFile = new File(MainActivity.this.getFilesDir(), "last_update.txt");
+        if(!lastUpdateFile.exists()) {
+            return true;
+        }
+
+        try {
+
+            FileInputStream fis = new FileInputStream(lastUpdateFile);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+
+            String lastUpdate = br.readLine();
+            br.close();
+            isr.close();
+            fis.close();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date lastUpdateDate = sdf.parse(lastUpdate);
+
+            Date currenctDate = new Date();
+            return !sdf.format(currenctDate).equals(sdf.format(lastUpdateDate));
+
+        } catch (IOException | java.text.ParseException e) {
+            e.printStackTrace();
+            Log.d("Updater", "Failed to parse from file");
+            return true;
+        }
+
+    }
+
+    private void updateLatestUpdateDate() {
+
+        try {
+            File lastUpdateFile = new File(MainActivity.this.getFilesDir(), "last_update.txt");
+            FileOutputStream fos = new FileOutputStream(lastUpdateFile);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+
+            //write to file
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            osw.write(sdf.format(new Date()));
+            osw.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("Updater", "Could write the latest update date to latestUpdateDate file");
+        }
+
+    }
 
 }

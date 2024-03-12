@@ -50,13 +50,6 @@ public class DownloadFileTask {
                                 saveToFile(outputPath, result);
                                 Log.d("OPP", "OPP: " + outputPath);
 
-                                //logging for file path
-                                String fileName = "values.csv";
-                                File file = new File(context.getFilesDir(), fileName);
-                                String filePath = file.getAbsolutePath();
-
-                                // Log the file path
-                                Log.d("DownloadFileTask", "File saved to: " + filePath);
                             } else {
                                 // Error downloading file
                                 Toast.makeText(context, "Error downloading file", Toast.LENGTH_LONG).show();
