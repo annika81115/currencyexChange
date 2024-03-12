@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.currencyexchange.databinding.ActivityMainBinding;
 
+import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -105,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
         // maybe need some improvement
         DownloadFileTask downloadTask = new DownloadFileTask(MainActivity.this, "http://194.164.56.173:1234/csv");
         downloadTask.execute();
+
+
 
     }
 

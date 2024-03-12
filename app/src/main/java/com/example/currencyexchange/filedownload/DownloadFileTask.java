@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,6 +48,14 @@ public class DownloadFileTask {
                                 // Save file to specific path
                                 String outputPath = "values.csv"; // Example path
                                 saveToFile(outputPath, result);
+
+                                //logging for file path
+                                String fileName = "values.csv";
+                                File file = new File(context.getFilesDir(), fileName);
+                                String filePath = file.getAbsolutePath();
+
+                                // Log the file path
+                                Log.d("DownloadFileTask", "File saved to: " + filePath);
                             } else {
                                 // Error downloading file
                                 Toast.makeText(context, "Error downloading file", Toast.LENGTH_LONG).show();
