@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
         DownloadFileTask downloadTask = new DownloadFileTask(MainActivity.this, "http://194.164.56.173:1234/csv");
         downloadTask.execute();
 
+        Log.d("CSVReader", "Between download and read");
+
         this.readAndPrintCsvFile();
 
     }
@@ -174,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
             isr.close();
             fis.close();
         } catch (IOException e) {
+            Log.d("CSVReader", e.getMessage());
             e.printStackTrace();
         }
     }
