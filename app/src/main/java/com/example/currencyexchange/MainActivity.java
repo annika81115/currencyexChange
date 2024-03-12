@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
@@ -24,6 +26,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.currencyexchange.databinding.ActivityMainBinding;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,7 +101,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         // still testing
-        new DownloadFileTask(MainActivity.this).execute(url);
+        // this part is for downloading the file
+        // maybe need some improvement
+        DownloadFileTask downloadTask = new DownloadFileTask(MainActivity.this, "http://194.164.56.173:1234/csv");
+        downloadTask.execute();
 
     }
 

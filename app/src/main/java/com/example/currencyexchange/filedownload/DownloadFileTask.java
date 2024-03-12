@@ -1,80 +1,92 @@
 package com.example.currencyexchange.filedownload;
 
 import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
-import com.example.currencyexchange.MainActivity;
-
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class DownloadFileTask extends AsyncTask<String, Void, String> {
+public class DownloadFileTask {
 
     private Context context;
+    private String url;
 
-    public DownloadFileTask(Context context) {
+    public DownloadFileTask(Context context, String url) {
         this.context = context;
+        this.url = url;
     }
 
+    public void execute() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
 
-    @Override
-    protected String doInBackground(String... urls) {
-        try {
-            URL url = new URL(urls[0]);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // Background work here (e.g., downloading file)
+                    String result = downloadFileFromUrl(url);
 
-            try {
-                InputStream in = urlConnection.getInputStream();
-                Scanner scanner = new Scanner(in);
-                scanner.useDelimiter("\\A");
-                boolean hasInput = scanner.hasNext();
-                if(hasInput) {
-                    return scanner.next();
-                }else {
-                    return null;
+                    // UI Thread work (updating UI or saving file) should be done using handler.post
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (result != null) {
+                                // File downloaded successfully
+                                Toast.makeText(context, "File downloaded: " + result, Toast.LENGTH_SHORT).show();
+                                // Save file to specific path
+                                String outputPath = "/storage/emulated/0/downloaded_file.txt"; // Example path
+                                saveToFile(outputPath, result);
+                            } else {
+                                // Error downloading file
+                                Toast.makeText(context, "Error downloading file", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } finally {
-                urlConnection.disconnect();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+        });
+
+        // Remember to shutdown executor when you're done
+        executor.shutdown();
+    }
+
+    private String downloadFileFromUrl(String urlString) throws IOException {
+        URL url = new URL(urlString);
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        try {
+            InputStream in = urlConnection.getInputStream();
+            Scanner scanner = new Scanner(in);
+            scanner.useDelimiter("\\A");
+            boolean hasInput = scanner.hasNext();
+            if (hasInput) {
+                return scanner.next();
+            } else {
+                return null;
+            }
+        } finally {
+            urlConnection.disconnect();
         }
     }
 
-
-    @Override
-    protected void onPostExecute(String result) {
-        if(result != null) {
-            Toast.makeText(context, "File downloaded: " + result, Toast.LENGTH_SHORT).show();
-
-            //save to file
-            this.saveToFile(result);
-        }else {
-            Toast.makeText(context, "Error downloading file", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void saveToFile(String fileContent) {
-
+    private void saveToFile(String outputPath, String fileContent) {
         FileOutputStream outputStream;
         try {
-            outputStream = context.openFileOutput("values.csv" , Context.MODE_PRIVATE);
+            outputStream = new FileOutputStream(outputPath);
             outputStream.write(fileContent.getBytes());
             outputStream.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
-
 }
