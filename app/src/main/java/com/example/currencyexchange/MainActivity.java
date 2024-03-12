@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.util.Log;
 import android.view.Menu;
@@ -65,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
         setDarkModeSettings();
 
+        InputStream inputStream = getResources().openRawResource(R.raw.output);
+        CSVReader.readCSVToSpinner(this, findViewById(R.id.firstSpinner), findViewById(R.id.secondSpinner), inputStream);
+
+
         switchMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,9 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setSpinner(R.id.firstSpinner);
-        setSpinner(R.id.secondSpinner);
-
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
                 //getSpinner(R.id.firstSpinner);
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
