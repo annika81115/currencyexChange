@@ -3,6 +3,7 @@ package com.example.currencyexchange.filedownload;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
@@ -22,6 +23,7 @@ public class DownloadFileTask {
     public DownloadFileTask(Context context, String url) {
         this.context = context;
         this.url = url;
+        Log.d("DownloadFileTask", "Context: " + context.getClass().getSimpleName());
     }
 
     public void execute() {
@@ -41,17 +43,18 @@ public class DownloadFileTask {
                         public void run() {
                             if (result != null) {
                                 // File downloaded successfully
-                                Toast.makeText(context, "File downloaded: " + result, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "File downloaded: " + result, Toast.LENGTH_LONG).show();
                                 // Save file to specific path
-                                String outputPath = "/storage/emulated/0/downloaded_file.txt"; // Example path
+                                String outputPath = "values.csv"; // Example path
                                 saveToFile(outputPath, result);
                             } else {
                                 // Error downloading file
-                                Toast.makeText(context, "Error downloading file", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Error downloading file", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
                 } catch (Exception e) {
+                    Log.e("DownloadFileTask", "Exception occurred: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -80,6 +83,7 @@ public class DownloadFileTask {
     }
 
     private void saveToFile(String outputPath, String fileContent) {
+        Log.d("DownloadFileTask", "Saving file to: " + outputPath);
         FileOutputStream outputStream;
         try {
             outputStream = new FileOutputStream(outputPath);
