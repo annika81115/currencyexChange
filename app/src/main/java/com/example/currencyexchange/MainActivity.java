@@ -1,5 +1,6 @@
 package com.example.currencyexchange;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -11,8 +12,10 @@ import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.app.Fragment;
 
 import com.example.currencyexchange.filedownload.DownloadFileTask;
+import com.example.currencyexchange.ui.info.InfoFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -92,9 +95,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //getSpinner(R.id.firstSpinner);
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Tippe auf die Währung und wähle eine andere aus, dann gebe einen Wert ein und tippe auf den Pfeil rechts daneben.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
             }
         });
 

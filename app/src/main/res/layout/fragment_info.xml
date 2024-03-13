@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.info.InfoFragment">
 
+    <FrameLayout
+        android:id="@+id/fragment_containerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <TextView
         android:id="@+id/text_gallery"
         style="@style/TextColor"
