@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         setDarkModeSettings();
 
-        String inputStream = MainActivity.this.getFilesDir().getPath() + "/values.csv";
-        CSVReader.readCSVToSpinner(this, findViewById(R.id.firstSpinner), findViewById(R.id.secondSpinner), inputStream);
+        String pathToFile = MainActivity.this.getFilesDir().getPath() + "/values.csv";
+        CSVReader.readCSVToSpinner(this, findViewById(R.id.firstSpinner), findViewById(R.id.secondSpinner), pathToFile);
 
 
         switchMode.setOnClickListener(new View.OnClickListener() {
