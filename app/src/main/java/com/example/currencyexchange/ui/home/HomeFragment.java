@@ -84,9 +84,11 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+
+    // kommastellen anpassen
     void setExchangeRate(String pExchangeRate){
         TextView textView = (TextView) getView().findViewById(R.id.text_home);
-        textView.setText(pExchangeRate);
+        textView.setText(pExchangeRate.substring(0,6));
     }
 
     void setExplanation(String pExplanation){
