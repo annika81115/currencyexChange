@@ -91,14 +91,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //getSpinner(R.id.firstSpinner);
-                Snackbar.make(view, "Tippe auf die Währung und wähle eine andere aus, dann gebe einen Wert ein und tippe auf den Pfeil rechts daneben.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;

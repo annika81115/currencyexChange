@@ -19,6 +19,7 @@ import com.example.currencyexchange.R;
 import com.example.currencyexchange.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Objects;
 

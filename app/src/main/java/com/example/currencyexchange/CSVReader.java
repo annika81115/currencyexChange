@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.currencyexchange.ui.home.HomeFragment;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
