@@ -14,10 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.currencyexchange.CSVReader;
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -28,9 +30,11 @@ public class HomeFragment extends Fragment {
 
     private EditText input2;
 
-    private double exchangeRate = 0.00004409 ;
-
     private double doenerPrice = 6.5;
+
+    private double exchangeRate = 0;
+
+    boolean complicate = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -62,7 +66,7 @@ public class HomeFragment extends Fragment {
         binding.firstSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        getExchangeRate(id);
+                        calculateExchangeRate(view);
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
@@ -71,7 +75,7 @@ public class HomeFragment extends Fragment {
         binding.secondSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        getExchangeRate(id);
+                        calculateExchangeRate(view);
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
@@ -103,12 +107,12 @@ public class HomeFragment extends Fragment {
     private void exchange(View view){
         input1 = (EditText) getView().findViewById(R.id.input1);
         if (input1.getText().toString().trim().length() > 0) {
-            //getExchangeRate();
+            exchangeRate = calculateExchangeRate(view);
             double result = calculate(exchangeRate);
             String result2 = String.valueOf(result);
             setText(R.id.input2, result2);
-            String doenerValue = getDoenerValue(result);
-            setDoenerValue(doenerValue);
+            setDoenerValue(result);
+            setExplanation(getTextString(R.id.input1) + " " + getSpinner(R.id.firstSpinner) + " entsprechen " + getTextString(R.id.input2) +" " + getSpinner(R.id.secondSpinner) + ".");
         }else {
             Snackbar.make(view, "Gebe bitte erst eine Zahl ein!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
@@ -116,31 +120,56 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private String getDoenerValue(double pResult) {
+    private void setDoenerValue(double pResult) {
+        if (complicate){
+            pResult = pResult/6.5;
+        }
         double doenerValue = round(pResult/ doenerPrice, 2);
-        return String.valueOf(doenerValue);
+        setDoenerValue(String.valueOf(doenerValue));
     }
 
     private void changeSides(){
         String spinner1 = getSpinner(R.id.firstSpinner);
         String spinner2 = getSpinner(R.id.secondSpinner);
-        String number1 = getTextString(R.id.input1);
         String number2 = getTextString(R.id.input2);
 
+        calculateExchangeRate(getView());
+
         setText(R.id.input1, number2);
-        setText(R.id.input2, number1);
+        setText(R.id.input2, " ");
 
         setSpinner(R.id.firstSpinner, spinner2);
         setSpinner(R.id.secondSpinner, spinner1);
     }
 
-    private double getExchangeRate(long id) {
+    private double calculateExchangeRate(View view) {
+        String stringResult = "0";
         double result = 0;
-        String currency1 = getSpinner(R.id.firstSpinner);
-        String currency2 = getSpinner(R.id.secondSpinner);
-        if (!Objects.equals(currency1, currency2)){
-          //TODO: implement the rest
+        complicate = false;
+        int currency1 = getSpinnerPosition(R.id.firstSpinner);
+        int currency2 = getSpinnerPosition(R.id.secondSpinner);
+        ArrayList<String> exchangeRates = CSVReader.getExchangeRates();
+        if (!Objects.equals(currency1, currency2) && currency1 == 0){
+            stringResult = exchangeRates.get(currency2 - 1);
+            result = Double.parseDouble(stringResult);
+            doenerPrice = 6.5 * result;
+        } else if (!Objects.equals(currency1, currency2) && currency2 == 0) {
+            String interim = exchangeRates.get(currency1 - 1);
+            result = 1 / Double.parseDouble(interim);
+            stringResult = String.valueOf(result);
+            doenerPrice = 6.5;
+        } else if (!Objects.equals(currency1, currency2)) {
+            String firstInterim = exchangeRates.get(currency1-1);
+            String secondInterim = exchangeRates.get(currency2-1);
+            result = Double.parseDouble(firstInterim) * (1/ Double.parseDouble(secondInterim));
+            stringResult = String.valueOf(result);
+            complicate = true;
+            doenerPrice = 6.5 * result;
+        } else {
+        Snackbar.make(view, "Bitte ändere eine der ausgewählten Währungen.", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
         }
+        setExchangeRate(stringResult);
         return result;
     }
 
@@ -161,6 +190,10 @@ public class HomeFragment extends Fragment {
         return spinner.getSelectedItem().toString();
     }
 
+    public int getSpinnerPosition(int pSpinnerId){
+        Spinner spinner = (Spinner) getView().findViewById(pSpinnerId);
+        return spinner.getSelectedItemPosition();
+    }
 
     public void setText(int pTextId, String pText){
         EditText input = (EditText) getView().findViewById(pTextId);
