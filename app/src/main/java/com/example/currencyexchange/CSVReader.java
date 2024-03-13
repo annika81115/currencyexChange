@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.currencyexchange.ui.home.HomeFragment;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,10 +20,14 @@ public class CSVReader {
 
     static ArrayList<String> exchangeRates = new ArrayList<>();
 
+    public static ArrayList<String> getExchangeRates(){
+        return exchangeRates;
+    }
+
     public static void readCSVToSpinner(Context context, Spinner spinner, Spinner secondSpinner, InputStream inputStream) {
 
         currencies.add("Euro");
-        parseCSVtoArray(inputStream, 2);
+        parseCSVtoArray(inputStream);
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -33,11 +39,7 @@ public class CSVReader {
         secondSpinner.setSelection(1);
     }
 
-    public void getExchangeRates(InputStream pInputStream){
-        parseCSVtoArray(pInputStream, 3);
-    }
-
-    private static void parseCSVtoArray(InputStream pInputStream, int pColumnToRead){
+    private static void parseCSVtoArray(InputStream pInputStream){
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(pInputStream));
 
@@ -47,11 +49,15 @@ public class CSVReader {
             while ((line = br.readLine()) != null) {
                 String[] daten = line.split(csvSplitBy);
 
-                // Überprüfe, ob die Spalte vorhanden ist, um ArrayIndexOutOfBoundsException zu vermeiden
-                if (daten.length > pColumnToRead) {
-                    currencies.add(daten[pColumnToRead]);
+                if (daten.length > 2) {
+                    currencies.add(daten[2]);
+                }
+
+                if (daten.length > 3) {
+                    exchangeRates.add(daten[3]);
                 }
             }
+
             br.close();
         } catch (IOException e) {
             e.printStackTrace();

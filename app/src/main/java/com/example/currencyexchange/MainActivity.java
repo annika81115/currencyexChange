@@ -1,5 +1,6 @@
 package com.example.currencyexchange;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -11,8 +12,10 @@ import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.app.Fragment;
 
 import com.example.currencyexchange.filedownload.DownloadFileTask;
+import com.example.currencyexchange.ui.info.InfoFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,6 +34,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.OutputStreamWriter;
@@ -87,15 +91,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //getSpinner(R.id.firstSpinner);
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-            }
-        });
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;

@@ -13,6 +13,12 @@
     <string name="number_two">number two</string>
     <string name="home_text1">Der aktuelle Wechselkurs beträgt</string>
     <string name="button_to_submit">Button to submit</string>
-    <string name="info">Info</string>
+    <string name="info">info</string>
     <string name="doener">"Gib erst einen Wert zum Umrechnen ein! Dann wirst du erfahren, wie viele Döner es Wert ist!"</string>
+    <string name="aboutUs_body">"Wir sind ein kleines Entwicklerteam von der HWR-Berlin. Im Zuge eines Moduls, unseres Studiums, haben wir diese App entwickelt und unser Wissen so im Software Engineering vertieft."</string>
+    <string name="aboutUs">About us!</string>
+    <string name="nutzung_body">"Wähle eine beliebige Währung im Dropdown Menü aus und gebe dann eine Zahl ein. Lasse dir nun dein Ergebnis berechnen durch einen Klick auf den Pfeil. Durch einen Berührung auf den Kreis mit den Pfeilen können die zwei ausgewählten Währungen getauscht werden."</string>
+    <string name="nutzung">Nutzung</string>
+    <string name="data_body">"Wir erheben unsere Daten mittels eines Webscrapers, der auf die Seite https://www.waehrungsrechner.de/wechselkurse/  zugreift und die Daten strukturiert."</string>
+    <string name="data">Daten</string>
 </resources>
