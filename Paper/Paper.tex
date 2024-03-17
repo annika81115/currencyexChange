@@ -15,7 +15,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Currency Exchange eine App zur Anzeige von Wechselkursen mit Hilfe eines Webscrapers}
+\title{Currency Exchange, eine App zur Anzeige von Wechselkursen mit Hilfe eines Webscrapers}
 
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Matz, Annika}
@@ -48,40 +48,48 @@ s\_reetz22@stud.hwr-berlin.de}
 
 
 \section{Einführung}
-Das Modul Software-Engineering 2 soll den Studierenden beibringen wie eine Software entwickelt wird und welche Schritte dabei einzuhalten sind. Dazu sollen sie auch selber eine Software und andere Elemente des Softwareentwicklung, wie zum Beispiel UML-Diagrammen, erstellen. Teil dieser ist ein Paper, welches genauer auf die Entwicklung der Software eingehen soll.
+Innerhalb unseres dualen Studiums der Informatik an der "Hochschule für Wirtschaft und Recht", nahmen wir an dem Modul Software-Engineering 2 teil. Ziel dieses ist die Entwicklung von Software, vermittelt zu bekommen und das erlernte Wissen direkt anwenden zu können innerhalb einer Projektarbeit. Dabei wird auf die Grundlagen des Projektmanagments geachtet, wofür z.B. UML-Diagrammen angefertigt werden. Zur Dokumentation des Projektes wird dieses Paper angefertigt. 
+Innerhalb des Moduls werden auch Softskills gefördert, z.B. die Präsentationsfähigkeiten oder die Sozialkompetenz innerhalb von Gruppenarbeiten.
 
 \section{Idee des Projektes}
-Die Idee für das Modul Software-Engineering 2 besteht aus einer Android-App, die mit Hilfe eines Webscrapers Wechselkurse erhält und Beträge der unterschiedlichen Währungen ineinander umrechnet.
+Ein sehr großer Teil unseres Lebens dreht sich um das erwerben von unterschiedlichen Materiellen Gütern. Für unserer Arbeit werden wir vergütet, im Supermarkt kaufen wir davon unser Abendessen und an den Wochenenden und im Urlaub gehen wir auf Reisen. Auf diesen müssen wir uns in einer fremden Kultur zu Recht finden und konsumieren weiter Güter. Doch wie können wir einen Wert von diesen einschätzen, wenn wir die Währung nicht kennen? Und genau dieses Problem löst unsere App "Currency Exchange". Einfaches nachschlagen von tagesaktuellen Wechselkursen und umrechnen zwischen verschiedenen Währungen. Ein besonderes Feature ist das Umwandeln des eingegebenen Wertes in die Anzahl von Döner, welche damit gekauft werden könnten in Euro. \\
+Die  Android-App arbeitet mit Hilfe eines Webscrapers , welcher Wechselkurse erhält und Beträge der unterschiedlichen Währungen ineinander umrechnet.
 
 \section{Projektorganisation}
-Innerhalb eines Softwareentwicklungsprojekts erhalten die einzelnen Bearbeitenden verschiedene Rollen, die ihnen unterschiedliche Aufgaben zu teilen. Da in diesem Fall das Entwicklungsteam aus wenigen Personen bestand, wurde entschieden, dass jeder überall helfen und arbeiten kann. Allerdings wurde für jeden Bereich wie Organisation, Serveradministration und Logo-Design eine Person gewählt, die für diesen Bereich der Ansprechpartner ist und somit auch eine Art Verantwortlicher. 
+Innerhalb eines Softwareentwicklungsprojekts erhalten die einzelnen Bearbeitenden verschiedene Rollen, die ihnen unterschiedliche Aufgaben zu teilen. In diesem Fall bestand das Entwicklungsteam aus wenigen Personen, so wurden keine expliziten Arbeitsbereiche vergeben.  So wurden Aufgaben nach und nach vergeben, wobei jeder Bereich eine eigene Ansprechperson besaß. Unterteilt wurde in Projektleitung, Serveradministration, Design und Testdurchführung. Zu Anfang wurde für essentiell wichtige Themen, wie z.B. die Software-Architektur oder den groben Design-Entwurf, wurden Teammeetings durchgeführt und die Umsetzung so zusammen geplant. Sichergestellt wurde so, dass jedes Teammitglied mit einbezogen wird und alle auf dem gleichen Stand sind. \\
+Die Programmierung der Software wurde von Teammeeting zu Teammeeting aufgeteilt. Hauptsächlich kümmerten sich Benjamin und Tobias Reetz um die Programmierung des Webscrapers, sowie die Schnittstelle und ein Teil des Backend der App. Annika Matz kümmert sich vor allem um die Umsetzung des Designentwurfs zu einem funktionierenden Frontend, sowie ein Teil der Programmierung des Backend.
 
-\subsection{Organisation}
-Der Bereich der Organisation wurde von Annika Matz geleitet. Sie behielt die unterschiedlichen Abgabetermine im Blick. Außerdem sorgte sie dafür, dass regelmäßig Treffen in der Gruppe statt fanden und die weiteren Entwicklungsschritte besprochen wurden.
+\subsection{Projektleitung}
+Der Projektleitung wurde von Annika Matz übernommen. Unteranderem behielt sie die unterschiedlichen Abgabetermine im Blick. Außerdem sorgte sie für regelmäßig Treffen in der Gruppe und leitete diese an. Bei diesen wurde der aktuelle Stand ausgewertet, weitere Entwicklungsschritte besprochen und Aufgaben verteilt. \\
+Des weiteren achtete sie auch auf die Projektanforderungen und führte die Qualitätssicherung durch, wodurch sie für eine angemessene Feedback innerhalb der Teammeetings sorgt.
 
 \subsection{Serveradministration}
-Der Bereich Serveradministration wurde von Benjamin Liebenberg beaufsichtigt. Da er schon viel Erfahrung auf dem Bereich hatte, konnte er ohne Probleme die Leitung dieses Bereiches übernehmen.
+Der Bereich Serveradministration wurde von Benjamin Liebenberg beaufsichtigt. Aufgrund seiner weitreichenden Erfahrung in diesem Gebiet, konnte er diesen Bereich übernehmen. Er hostet unseren Webscraper auf seinem Server, sorgt für täglich aktualisierte Daten innerhalb der App und stellt die Schnittstelle für unsere App bereit.
 
-\subsection{Logo-Design}
-Das Logo-Design wurde vo Tobias Reetz übernommen, weil er bereits im Modul Software-Engineering 1 eine Rolle im Designbereich übernommen hatte. 
+\subsection{Design \& Testplanung}
+Das Design und die Testplanung wurden zum größten Teil von Tobias Reetz übernommen. Aufgrund seiner Designerfahrung im Modul Software-Engineering 1, übernahm er diese Rolle und designte vor allem das App-Logo. Er sorgte für eine angemessene Farbgebung und dafür, dass die App aufgrund ihrer Gestaltung schnell wieder erkennt werden kann. \\
+Außerdem übernahm er das Konkretisieren von Usability-Tests, welche wir zuvor im Plemnum entworfen hatte und führte diese mit unseren Kommilitonen durch. Damit trug er einen entscheidenen Beitrag zur Fehlersuche und somit zur Qualität unseres Programmes bei.
 
 \section{Anforderungen}
-An die Software werden immer Erwartungen und Anforderungen gestellt. Wichtig für die Entwickelnden ist Einteilung dieser und die damit einhergehende Wichtigkeit für den Erfolg des Projekts. In diesem Projekt wurden die unterschiedlichen Anforderung in drei Kategorien unterteilt. Die Kategorisierungen beinhalten nicht funktionale, funktionale und optionale funktionale Anforderungen.
+An eine Software werden immer unterschiedliche Erwartungen und Anforderungen gestellt. Eine genaue Definition sind wichtig für den Erfolg des Projektes. In diesem Projekt werden die unterschiedlichen Anforderung in drei Kategorien unterteilt. Sie beinhalten nicht funktionale, funktionale und optionale funktionale Anforderungen.
 
 \subsection{Nicht funktionale Anforderungen}
-Die nicht funktionalen Anforderungen beschreiben Nicht-Erwartungen und Nicht-Ziele an die Software, die für ein erfolgreiches Projekt nicht verfolgt werden sollen. \\\\ Hier wurde festgehalten, dass die Anwendung nicht für jede Plattform zugänglich sein soll. Des Weiteren wird eine Zweisprachigkeit der App nicht unterstützt.
+Nicht-funktionale Tests decken alle Anforderungen ab, welche das gesamte System ansich betreffen. Es werden somit keine Funktionen abgeprüft, sondern Eigenschaften und Bestandteile. Für das Projekt wurde besonders auf eine sehr gute Usability geachtet, was besonders durch eine intuitive und einfache Benutzung begründet werden soll.
+Desweiteren soll eine Verfügbarkeit des Projekt auf Android-Handys garantiert werden. Um einen hohen Datenschutz garantieren zu können erheben wir keine Daten und speichern auch nicht die in der Vergangenheit getätigten Eingaben dem Nutzer zur Verfügung. 
 
 \subsection{Funktionale Anforderungen}
-Funktionale Anforderung beinhalten Erwartungen und Ziele an die Software, welche für ein erfolgreiches Projekt erfüllt werden müssen. \\\\ Das wichtigste Ziel für die Software ist ein lauffähige Android-Handy-Applikation. Eine weitere Anforderung ist das richtige Umrechnen der verschiedenen Währungen ineinander. Weiterhin soll immer ein tagesaktueller Wechselkurs bereit stehen. In die App sollen auch mindestens sieben Währungen eingebunden werden. Zusätzlich soll die App auch ein möglichst einfaches minimalistischen Design aufweisen. 
+Funktionale Anforderung definieren die Funktionen und Erwartungen der Software, welche für ein erfolgreiches Projekt erfüllt werden müssen. \\
+Das wichtigste Ziel für die Software ist eine lauffähige Android-Handy-Applikation, welche verschiedene Eingaben zwischen verschiedenen Währungen richtig Umrechnen kann. Es soll immer ein tagesaktueller Wechselkurs bereit stehen. In die App sollen auch mindestens sieben Währungen eingebunden werden.
 
 \subsection{Optionale funktionale Anforderungen}
-Anforderungen, die für ein erfolgreiches Projekt nicht wichtig sind, aber es schön wäre sie in es einzubauen, werden zu den optionalen funktionalen Anforderungen eingeteilt. \\\\ Eine dieser ist, dass die Geldbeträge in die Anzahl an Döner umgerechnet wird, die die Nutzenden sich damit kaufen könnte. Des Weiteren wäre es schön, wenn die Nutzenden prozentuale Beträge dazurechnen lassen könnten, um zum Beispiel Trinkgeld ausrechnen zu können.
+Anforderungen, welche nicht essentiell notwendig für die grundlegenden Funktionsweise sind, aber sie diese erweitern, werden zu den optionalen funktionalen Anforderungen gezählt. \\
+Zu diesen zählt die Umrechnung der Anzahl an Döner, die die Nutzenden sich mit dem eingetragenen Wert kaufen könnten in Euro. Außerdem könnte die App durch eine Funktion zum Hinzufügen von Prozentualen Werten ergänzt werden. Diese könnten zum Beispiel zur Berechnung der Mehrwertsteuer oder des Trinkgeldes genutzt werden.
 
 \section{Entwurf}
-Wie die Software aufgebaut und strukturiert werden soll, wird in dem Entwurf fest gehalten. Dieser besteht in diesem Projekt aus zwei verschiedenen Komponenten der Systemarchitektur und einem Sequenzdiagramm. 
+Innerhalb eines Entwurfs wird der Aufbau und die Struktur des Projektes geplant und fest gehalten. Dieser besteht in diesem Projekt aus zwei der Systemarchitektur, einem Sequenzdiagramm und dem groben Designentwurf. Nach diesen Vorgaben wurde die App entwickelt.
 
 \subsection{Systemarchitektur}
-Die Systemarchitektur beschreibt wie ein System auf gebaut ist und welche Bereiche es in diesem gibt. 
+Eine Systemarchitektur beschreibt die Struktur des Projektes, so wie alle seine vorkommenden Bereiche und wie diese miteinander interagieren. 
 
 \begin{figure}[h]
 	\centering
@@ -90,7 +98,8 @@ Die Systemarchitektur beschreibt wie ein System auf gebaut ist und welche Bereic
 	\label{fig:software-architektursweii}
 \end{figure}
 \noindent
-Abbildung \ref{fig:software-architektursweii} zeigt wie die Softwarearchitektur strukturiert ist. Auf der linken Seite des Bildes ist der User-Client und auf der Rechten ist der Server. Da die Software somit zwei Komponenten aufweist, handelt es sich bei der Architektur um eine Zwei-Tier-Architektur. \\\\ Im User-Client ist zusehen, das der User mit dem in blau gekennzeichneten View interagiert. Der View ist das was die Nutzenden sehen können. Er besteht aus einem Header, einer Navigationsleiste und dem Content oder Inhalt. Über die Interaktion mit dem View können Nutzende verschiedene Controller erreichen, die im roten Bereich zu sehen sind. In dem User-Client existieren drei unterschiedliche ein mal der Navigator, der Data-Manager und der Calculator. Der Data-Manager ist dafür zuständig die Daten in einem Ordner zu speichern und sie den Anderen Controllern bereit zustellen. Er stellt auch Anfragen per HTTP-Request an den Server. Der Calculator berechnet die Wechselkurse und der Navigator sortiert Daten und stellt sie dem View bereit, der sie dann anzeigt. \\\\ Der Server weißt auch Controller auf. Er hat Bash-Skripts, die den Webscraper steuern. Der Data-Manager ist hier auch wieder für die Aufarbeitung der Daten zuständig. \\\\ Der Webscraper wurde nicht in dem User-Client integriert, da somit zu viele Anfragen auf die Webseite verhindert werden können. Sollten zu viele Anfragen an die Webseite geschickt werden, kann es zu einer Überlastung dieser kommen und sie stürzt ab. Da sie nicht Eigentum des Projektteams ist, muss dies verhindert werden, weshalb ein eigener Server zur Verfügung gestellt wird. Bei dem ist es nämlich in Ordnung, falls er überlastet sein sollte, da der Server dem Projektteam durch Benjamin Liebenberg zur Verfügung gestellt wird.
+Abbildung \ref{fig:software-architektursweii} zeigt wie die Softwarearchitektur strukturiert ist. Auf der linken Seite des Bildes ist der User-Client abgebildet und auf der Rechten der Server. Da die Software somit zwei Komponenten aufweist, handelt es sich um eine Zwei-Tier-Architektur. \\
+Im User-Client ist zusehen, dass der User mit der in blau gekennzeichneten View interagiert. Die View ist das was die Nutzenden sehen können. Es besteht aus einem Header, einer Navigationsleiste, und dem Inhalt. Über die Interaktion mit dem View können Nutzende verschiedene Controller erreichen, die im roten Bereich zu sehen sind. In dem User-Client existieren drei unterschiedliche ein mal der Navigator, der Data-Manager und der Calculator. Der Data-Manager ist dafür zuständig die Daten in einem Ordner zu speichern und sie den Anderen Controllern bereit zustellen. Er stellt auch Anfragen per HTTP-Request an den Server. Der Calculator berechnet die Wechselkurse und der Navigator sortiert Daten und stellt sie dem View bereit, der sie dann anzeigt. \\\\ Der Server weißt auch Controller auf. Er hat Bash-Skripte, die den Webscraper steuern. Der Data-Manager ist hier auch wieder für die Aufarbeitung der Daten zuständig. \\\\ Der Webscraper wurde nicht in dem User-Client integriert, da somit zu viele Anfragen auf die Webseite verhindert werden können. Sollten zu viele Anfragen an die Webseite geschickt werden, kann es zu einer Überlastung dieser kommen und sie stürzt ab. Da sie nicht Eigentum des Projektteams ist, muss dies verhindert werden, weshalb ein eigener Server zur Verfügung gestellt wird. Bei dem ist es nämlich in Ordnung, falls er überlastet sein sollte, da der Server dem Projektteam durch Benjamin Liebenberg zur Verfügung gestellt wird.
 
 \subsection{Sequenzdiagramm}
 Das Squenzdiagramm beschreibt die Kommunikation der unterschiedlichen Instanzen innerhalb der Software. \newline
