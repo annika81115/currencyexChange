@@ -6,10 +6,13 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -24,43 +27,57 @@ public class DownloadFileTask {
     public DownloadFileTask(Context context, String url) {
         this.context = context;
         this.url = url;
-        Log.d("DownloadFileTask", "Context: " + context.getClass().getSimpleName());
     }
 
     public void execute() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
-
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
+        executor.execute( () -> {
                 try {
                     // Background work here (e.g., downloading file)
+                    Log.d("INSIDE-RUN", "START");
                     String result = downloadFileFromUrl(url);
-
+                    Log.d("INSIDE-RUN", "DOWNLOAD");
                     // UI Thread work (updating UI or saving file) should be done using handler.post
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
+                        Log.d("INSIDE-RUN", "AFTER POST");
                             if (result != null) {
+                                Log.d("INSIDE-RUN", "NOT NULL");
                                 // File downloaded successfully
-                                Toast.makeText(context, "File downloaded: " + result, Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "File downloaded: " + result, Toast.LENGTH_LONG).show();
                                 // Save file to specific path
-                                String outputPath = context.getFilesDir().getPath() + "/values.csv"; // Example path
+                                String outputPath = new File(context.getFilesDir()+ "/values.csv").getPath(); // Example path
+                                Log.d("INSIDE-RUN", outputPath);
                                 saveToFile(outputPath, result);
                                 Log.d("OPP", "OPP: " + outputPath);
 
+                                try {
+                                    FileInputStream fis = new FileInputStream(outputPath);
+                                    InputStreamReader isr = new InputStreamReader(fis);
+                                    BufferedReader br = new BufferedReader(isr);
+
+                                    String line;
+                                    while ((line = br.readLine()) != null) {
+                                        // Print each line to logcat
+                                        Log.d("CSVReader", line);
+                                    }
+
+                                    br.close();
+                                    isr.close();
+                                    fis.close();
+                                } catch (IOException e) {
+                                    Log.d("CSVReader", "Failed to read and print: " + e.getMessage());
+                                    e.printStackTrace();
+                                }
                             } else {
                                 // Error downloading file
                                 Toast.makeText(context, "Error downloading file", Toast.LENGTH_LONG).show();
+                                Log.d("DOWNLOADER", "Failed to Download");
                             }
-                        }
-                    });
                 } catch (Exception e) {
                     Log.e("DownloadFileTask", "Exception occurred: " + e.getMessage());
                     e.printStackTrace();
                 }
-            }
+
         });
 
         // Remember to shutdown executor when you're done
