@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // to reproduce the latest bug
-        //this.fix();
+        this.fix();
 
         this.updateValues();
 
