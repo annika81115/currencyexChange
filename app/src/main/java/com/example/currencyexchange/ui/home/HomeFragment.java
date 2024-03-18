@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
     // kommastellen anpassen
     void setExchangeRate(String pExchangeRate){
         TextView textView = (TextView) getView().findViewById(R.id.text_home);
-        textView.setText(pExchangeRate.substring(0,6));
+        textView.setText(TrimDigitsAfterDot(pExchangeRate));
     }
 
     void setExplanation(String pExplanation){
@@ -222,4 +222,21 @@ public class HomeFragment extends Fragment {
         long tmp = Math.round(value);
         return (double) tmp / factor;
     }
+
+    static String TrimDigitsAfterDot(String input) {
+        int dotIndex = input.indexOf('.');
+        if(dotIndex == -1){
+            return input;
+        }
+
+        int endIndex = dotIndex + 1 + 4; // 1 for index + 4 -> 4 digits after dot
+
+        if(endIndex >= input.length()) {
+            return input;
+        }
+
+        return input.substring(0, endIndex);
+    }
+
+
 }

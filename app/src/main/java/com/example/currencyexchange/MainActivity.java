@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // to reproduce the latest bug
+        this.fix();
+
+        this.updateValues();
+
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         setDarkModeSettings();
 
-        String pathToFile = MainActivity.this.getFilesDir().getPath() + "/values.csv";
+        String pathToFile = MainActivity.this.getFilesDir() + "/values.csv";
         CSVReader.readCSVToSpinner(this, findViewById(R.id.firstSpinner), findViewById(R.id.secondSpinner), pathToFile);
 
 
@@ -104,12 +110,25 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+    }
+
+    private void fix () {
+        File file = new File(MainActivity.this.getFilesDir(), "values.csv");
+        if(file.exists()) {
+            boolean b = file.delete();
+            if(b) {
+                Log.d("FILE-TO-CSV", file.getAbsolutePath());
+            }
+        }
 
 
-        // still testing
-        // this part is for downloading the file
-        // maybe need some improvement
-        this.updateValues();
+        File file2 = new File(MainActivity.this.getFilesDir(), "last_update.txt");
+        if (file2.exists()) {
+            boolean b = file2.delete();
+            if(b) {
+                Log.d("LATEST", "DELETED FILE");
+            }
+        }
 
     }
 
@@ -156,12 +175,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void readAndPrintCsvFile() {
         // Construct the full file path
-        String fileName = "values.csv";
-        File file = new File(MainActivity.this.getFilesDir(), fileName);
+        String filePath = new File(MainActivity.this.getFilesDir(), "/values").getPath();
 
         // Read the CSV file
         try {
-            FileInputStream fis = new FileInputStream(file);
+            FileInputStream fis = new FileInputStream(filePath);
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
 
@@ -173,9 +191,9 @@ public class MainActivity extends AppCompatActivity {
 
             br.close();
             isr.close();
-            fis.close();
+            //fis.close();
         } catch (IOException e) {
-            Log.d("CSVReader", e.getMessage());
+            Log.d("CSVReader", "Failed to read and print: " + e.getMessage());
             e.printStackTrace();
         }
     }
