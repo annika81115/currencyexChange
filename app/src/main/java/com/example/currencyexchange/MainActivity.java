@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // to reproduce the latest bug
-        this.fix();
+        //this.fix();
 
         this.updateValues();
 
@@ -206,7 +206,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("CSVReader", "Between download and read");
             this.readAndPrintCsvFile();
 
-            updateLatestUpdateDate();
         }
 
 
@@ -241,25 +240,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.d("Updater", "Failed to parse from file");
             return true;
-        }
-
-    }
-
-    private void updateLatestUpdateDate() {
-
-        try {
-            File lastUpdateFile = new File(MainActivity.this.getFilesDir(), "last_update.txt");
-            FileOutputStream fos = new FileOutputStream(lastUpdateFile);
-            OutputStreamWriter osw = new OutputStreamWriter(fos);
-
-            //write to file
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            osw.write(sdf.format(new Date()));
-            osw.close();
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d("Updater", "Could write the latest update date to latestUpdateDate file");
         }
 
     }

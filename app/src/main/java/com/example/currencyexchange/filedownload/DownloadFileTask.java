@@ -6,6 +6,8 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.currencyexchange.MainActivity;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +15,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -70,7 +76,7 @@ public class DownloadFileTask {
                                 }
                             } else {
                                 // Error downloading file
-                                Toast.makeText(context, "Error downloading file", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "Error downloading file", Toast.LENGTH_LONG).show();
                                 Log.d("DOWNLOADER", "Failed to Download");
                             }
                 } catch (Exception e) {
@@ -109,8 +115,32 @@ public class DownloadFileTask {
             outputStream = new FileOutputStream(outputPath);
             outputStream.write(fileContent.getBytes());
             outputStream.close();
+
+            updateLatestUpdateDate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void updateLatestUpdateDate() {
+
+        try {
+            File lastUpdateFile = new File(context.getFilesDir(), "last_update.txt");
+            FileOutputStream fos = new FileOutputStream(lastUpdateFile);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+
+            //write to file
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            osw.write(sdf.format(new Date()));
+            osw.close();
+            fos.close();
+
+            Log.d("LatestUpdate", "Successfully updated the latest update date");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("Updater", "Could write the latest update date to latestUpdateDate file");
+        }
+
+    }
+
 }
