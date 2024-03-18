@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.17)  17 MAR 2024 20:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.17)  18 MAR 2024 23:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -419,116 +419,71 @@ Overfull \hbox (0.79999pt too wide) in paragraph at lines 96--97
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
-
+Underfull \hbox (badness 3417) in paragraph at lines 107--108
+[]\OT1/ptm/m/n/10 Das Se-quenz-dia-gramm be-schreibt die Kom-mu-ni-ka-ti-on
  []
 
 
-Underfull \hbox (badness 1803) in paragraph at lines 100--102
-\OT1/ptm/m/n/10 Im User-Client ist zu-se-hen, das der User mit dem in
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
-
- []
-
-[2 <./Software-Architektur_SWEII.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
-
- []
-
-<Sequenzdiagramm.drawio.png, id=12, 1105.12875pt x 1869.98625pt>
+<Sequenzdiagramm.drawio.png, id=9, 1105.12875pt x 1869.98625pt>
 File: Sequenzdiagramm.drawio.png Graphic file (type png)
 <use Sequenzdiagramm.drawio.png>
-Package pdftex.def Info: Sequenzdiagramm.drawio.png  used on input line 108.
+Package pdftex.def Info: Sequenzdiagramm.drawio.png  used on input line 111.
 (pdftex.def)             Requested size: 252.0pt x 426.40695pt.
 
-Overfull \hbox (0.79999pt too wide) in paragraph at lines 108--109
+Overfull \hbox (0.79999pt too wide) in paragraph at lines 111--112
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
+LaTeX Warning: `h' float specifier changed to `ht'.
 
- []
-
-
-Underfull \hbox (badness 2111) in paragraph at lines 112--114
-\OT1/ptm/m/n/10 Das Ba-ckend schickt ei-ne An-fra-ge an den Ser-ver um
- []
+[2 <./Software-Architektur_SWEII.jpg>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
-
- []
-
-
-Underfull \hbox (badness 3514) in paragraph at lines 112--114
-\OT1/ptm/m/n/10 Unter der Ab-fra-ge ist ein alt Feld zu-se-hen, wel-ches
- []
-
-
-Underfull \hbox (badness 4467) in paragraph at lines 112--114
-\OT1/ptm/m/n/10 al-ter-na-tiv M[]oglichkeiten der User-Applikation-Interaktion
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
-
- []
-
-
-Underfull \hbox (badness 1590) in paragraph at lines 112--114
-\OT1/ptm/m/n/10 wie-der []Ahnlichkeiten auf. Die Nut-zen-den schi-cken ei-ne
- []
-
-
-Underfull \hbox (badness 3039) in paragraph at lines 119--120
+Underfull \hbox (badness 3039) in paragraph at lines 126--127
 []\OT1/ptm/m/n/10 Zur Im-ple-men-tie-rung der App wur-de Android-Studio
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/10 ver-wen-det, wel-ches ei-ne Ent-wick-lungs-um-ge-bung zur
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
 
-Underfull \hbox (badness 7522) in paragraph at lines 119--120
+Underfull \hbox (badness 7522) in paragraph at lines 126--127
 \OT1/ptm/m/n/10 Innerhalb der Java-Dateien wur-de die Business-Logik
  []
 
 
-Underfull \hbox (badness 6708) in paragraph at lines 122--123
+Underfull \hbox (badness 6708) in paragraph at lines 129--130
 []\OT1/ptm/m/n/10 Nach der Ein-stel-lung des Ser-vers wur-de ein C#-
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 122--123
+Underfull \hbox (badness 1603) in paragraph at lines 129--130
 \OT1/ptm/m/n/10 Skript ent-wi-ckelt, wel-ches f[]ur den Web-s-cra-per und die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
-[3 <./Sequenzdiagramm.drawio.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -540,7 +495,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4
+[3 <./Sequenzdiagramm.drawio.png>] [4
 
 ] (./Paper.aux) ) 
 Here is how much of TeX's memory you used:
@@ -550,11 +505,11 @@ Here is how much of TeX's memory you used:
  24530 multiletter control sequences out of 15000+600000
  501755 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,62p,1841b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 55i,11n,62p,836b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.en
 c}</usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/lo
 cal/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Paper.pdf (4 pages, 334878 bytes).
+Output written on Paper.pdf (4 pages, 334777 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
  18 compressed objects within 1 object stream
