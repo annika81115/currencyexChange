@@ -1,42 +1,34 @@
 package com.example.currencyexchange;
 
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Environment;
-import android.view.View;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.app.Fragment;
 
-import com.example.currencyexchange.filedownload.DownloadFileTask;
-import com.example.currencyexchange.ui.info.InfoFragment;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.currencyexchange.databinding.ActivityMainBinding;
+import com.example.currencyexchange.filedownload.DownloadFileTask;
+import com.google.android.material.navigation.NavigationView;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.BufferedReader;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -83,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         switchMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nightMode){
+                if (nightMode) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     editor = sharedPreferences.edit();
                     editor.putBoolean("nightMode", false);
@@ -112,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void fix () {
+    private void fix() {
         File file = new File(MainActivity.this.getFilesDir(), "values.csv");
-        if(file.exists()) {
+        if (file.exists()) {
             boolean b = file.delete();
-            if(b) {
+            if (b) {
                 Log.d("FILE-TO-CSV", file.getAbsolutePath());
             }
         }
@@ -125,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         File file2 = new File(MainActivity.this.getFilesDir(), "last_update.txt");
         if (file2.exists()) {
             boolean b = file2.delete();
-            if(b) {
+            if (b) {
                 Log.d("LATEST", "DELETED FILE");
             }
         }
@@ -138,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE);
         nightMode = sharedPreferences.getBoolean("nightMode", false);
 
-        if (nightMode){
+        if (nightMode) {
             switchMode.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
@@ -159,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-     private void setSpinner(int pID) {
+    private void setSpinner(int pID) {
         Spinner secondSpinner = (Spinner) findViewById(pID);
         // Create an ArrayAdapter using the string array and a default spinner layout.
         ArrayAdapter<CharSequence> secondSpinnerAdapter = ArrayAdapter.createFromResource(
@@ -200,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateValues() {
 
-        if(isUpdateNeeded()) {
+        if (isUpdateNeeded()) {
             DownloadFileTask downloadTask = new DownloadFileTask(MainActivity.this, "http://194.164.56.173:1234/csv");
             downloadTask.execute();
             Log.d("CSVReader", "Between download and read");
@@ -216,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isUpdateNeeded() {
 
         File lastUpdateFile = new File(MainActivity.this.getFilesDir(), "last_update.txt");
-        if(!lastUpdateFile.exists()) {
+        if (!lastUpdateFile.exists()) {
             return true;
         }
 
@@ -261,7 +253,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.d("Updater", "Could write the latest update date to latestUpdateDate file");
         }
-
     }
 
 }

@@ -148,6 +148,7 @@ public class HomeFragment extends Fragment {
     private double calculateExchangeRate(View view) {
         String stringResult = "0";
         double result = 0;
+        double resTwoCurrency = 0;
         complicate = false;
         int currency1 = getSpinnerPosition(R.id.firstSpinner);
         int currency2 = getSpinnerPosition(R.id.secondSpinner);
@@ -164,7 +165,7 @@ public class HomeFragment extends Fragment {
         } else if (!Objects.equals(currency1, currency2)) {
             String firstInterim = exchangeRates.get(currency1-1);
             String secondInterim = exchangeRates.get(currency2-1);
-            result = Double.parseDouble(firstInterim) * (1/ Double.parseDouble(secondInterim));
+            result = (1/Double.parseDouble(firstInterim)) * Double.parseDouble(secondInterim);
             stringResult = String.valueOf(result);
             complicate = true;
             doenerPrice = 6.5 * result;
