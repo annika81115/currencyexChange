@@ -121,27 +121,34 @@ Innerhalb der Applikation kann der User unterschiedliche Funktionen auswählen. 
 Zum Wechseln der Seite auf die Home-Seite bzw. der FAQ-Seite und zum Wechseln in den Dark-Mode bzw. Light-Mode navigiert der User sich durchs Frontend.
 
 \section{Implementierung}
-Die Implementierung ist in drei Abschnitte geteilt. Diese Segmente sind die Implementation der App, des Servers und der Schnittstelle innerhalb dieser.
 
-\subsection{Implementierung der App}
-Zur Implementierung der App wurde Android-Studio verwendet, welches eine Entwicklungsumgebung zur Entwicklung von Android-Apps ist. Innerhalb der Umgebung kann zwischen zwei Programmiersprachen gewählt werden. Diese sind Java und Kotlin. Zur Entwicklung der App wurde Java gewählt, da das Projektteam bereits Erfahrungen mit Java  durch das Modul Objekt orientierte Programmierung im zweiten Semester sammeln konnte. \\\\ Innerhalb der Java-Dateien wurde die Business-Logik implementiert. Die Darstellung der App kann auch mithilfe von Android-Studio übernommen werden. Dazu wurde in sogenannten XML-Dateien die Darstellung erstellt.
+\subsection{Konsistenz}
 
-\subsection{Implementierung des Servers}
-Nach der Einstellung des Servers wurde ein C\#-Skript entwickelt, welches für den Webscraper und die Datenstrukturierung zuständig ist. Es greift  auf eine Webseite zu und lädt die dortige HTML-Datei herunter. Danach liest es aus der Datei alle relevanten Daten und strukturiert diese. Nach der Strukturierung werden sie dann in einer CSV-Datei auf dem Server gespeichert. \\\\ Damit das C\#-Skript nicht jeden Tag manuell ausgeführt werden muss, wurde zusätzlich ein Bash-Skript entwickelt. Dieses Skript ist dazu zuständig jeden Tag um 6 Uhr das C\#-Skript auszuführen. \\\\ Nach der Erstellung der Skripte wurde zusätzlich eingestellt, dass die entstandene CSV-Datei über die IP-Adresse des Servers und einem Port zugänglich ist.
+\subsection{Vorbereitung}
 
-\subsection{Verbindung zum Server}
-In der App wurde implementiert, dass sie eine Anfrage an den Port des Servers schickt, unter dem die CSV-Datei erreichbar ist. Sollte eine Internetverbindung vorliegen, wird die sie heruntergeladen und gespeichert.
+\subsubsection{Versionsverwaltung}
+
+\subsubsection{Namenskonvention}
+
+\subsubsection{Entwicklungsumgebung und Programmiersprachen}
+
+
 
 \section{Integration}
+%Top-Down Integration
 Die Integration in der Softwareentwicklung beschäftigt sich mit den Schnittstellen zwischen den verschiedensten Systemen. Teilweise werden auch Anschlüsse unter verschiedenen Funktionseinheiten benötigt. Da die App im Vergleich zu anderen Softwareprodukten eher klein ist, werden hier nicht so viele Schnittstellen benötigt. \\\\ Die erste Anbindung befindet sich zwischen dem User-Client und dem Server. Sie dient zur Transferierung von Daten. \\\\ Die zweite und letzte Schnittstelle liegt zwischen dem Server und der Webseite. Sie ist auch wie die erste Anbindung für den Transfer von Daten zuständig. \\\\ Anbindungen von verschiedenen Funktionen werden in diesem Softwareprojekt nicht benötigt, weil sie alle in dem User-Client implementiert worden sind.
 
 \section{Tests}
+
+\subsection{Experience-based Testing}
+
+\subsection{Beta Tests}
 Die Testung der App wurde am 13.03.2024 mit Hilfe von User-Tests durchgeführt. Bei User-Tests testen Anwender die Software und beantworten anschließend Fragen über diese. Bei den Fragen an den User wurde auf zwei unterschiedliche Bereiche gezielt Fragen gestellt. Einmal der Funktionalität der Funktionen und Sonstiges.
 
-\subsection{Fragen über Funktionalitäten}
+\subsubsection{Black-Box Test}
 Die Fragen über die Funktionalitäten beschäftigten sich gezielt mit den Funktionen, wie zum Beispiel ob der Dark-Mode eingeschaltet werden könne oder Werte geändert, getauscht und umgerechnet werden können. \\\\ Bei den Fragen über die Funktionalitäten stellte sich heraus, dass die meisten Funktionen grundlegend funktionierten, allerdings Bugs enthielten. Die Währungen konnten alle ausgewählt werden. Wurde jedoch zweimal die gleiche Währung ausgewählt und in sich umgerechnet erfolgte ein Systemabsturz der App. Ein Systemabsturz entstand auch wenn als Betrag "."\space eingegeben wurde. Der Punkt dient als Kommata. Der Dark-Mode verursachte auf der FAQ-Seite auch zu Problemen, da wenn er dort eingeschaltet oder ausgeschaltet wurde, entstand auch wieder ein Systemabsturz. Ein weiterer Absturz wurde verursacht, wenn von der FAQ-Seite zu der Home-Seite gewechselt worden ist und der Dark-Mode-Knopf nicht als erstes betätigt worden ist.
 
-\subsection{Sonstige Fragen}
+\subsubsection{Usability Test}
 Die sonstigen Fragen beschäftigten sich mit dem Aussehen der App und Verbesserungsvorschlägen. \\\\ Dies ergab, dass die App ein gutes Design aufweist und einfach zu verstehen ist. Ein Verbesserungsvorschlag der häufiger erwähnt worden ist, ist dass die Auswahl der Währungen doch besser zu gestalten wäre, da diese alphabetisch nach den Ländern sortiert wurden.
 
 \section{Wartung}
