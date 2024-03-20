@@ -19,20 +19,17 @@
 
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Matz, Annika}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+\IEEEauthorblockA{
 Berlin, Deutschland \\
 s\_matz22@stud.hwr-berlin.de}
 \and
 \IEEEauthorblockN{2\textsuperscript{nd} Liebenberg, Benjamin}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+\IEEEauthorblockA{
 Oranienburg, Deutschland \\
 s\_liebenberg22@stud.hwr-berlin.de}
 \and
 \IEEEauthorblockN{3\textsuperscript{rd} Reetz, Tobias}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+\IEEEauthorblockA{
 Berlin, Deutschland \\
 s\_reetz22@stud.hwr-berlin.de}
 %Beispiel wie es aussah
@@ -103,7 +100,15 @@ Der Server besteht aus verschiedenen Instanzen, die für die Funktionalitäten v
 Die Applikation ist eine Instanz innerhalb des Sequenzdiagramms, welches durch die zwei Teilinstazen dem Back- und Front-End vertreten wird und es für die letzten beiden Bereiche des Diagramms verantwortlich ist. Für den Ersten dieser Bereiche ist nur das Back-End verantwortlich, weil es an den Server, genauer gesagt an die Währungsliste, eine Anfrage sendet, mit der die aktualisierten Daten abgefragt werden sollen. Besteht eine Internetverbindung sendet die Liste die neuen Informationen an das Back-End, welches dann die Informationen intern abspeichert. Sollte jedoch keine Verbindung zum Internet bestehen wird mit den schon besthenden Daten der Applikation weiter gearbeitet.\\
 Innerhalb des letzten Bereiches des Diagramms, welcher sich mit der Verarbeitung der der User-Inputs beschäftigt, spielen auch die Instanzen des Font-Ends und des Users eine Rolle. Der User hat diverse Möglichkeiten mit der Applikation zu interagieren, welche in die zwei Kategorien , die jeweils einen ähnlichen Aufbau aufweisen, der logischen und graphischen Anpassung unterteilt werden kann.  Bei der logistischen Komponente sendet der User eine von drei Nachrichten an das Back-End, welches dann eine Anfrage über die ausgewählten Werte an das Front-End sind. Die Userbefehle sind klickSwapSpinnerValues, welche die ausgewählten Währungen miteinander tauscht, selectCurrency, welche es ermöglicht eine neue Währung auszuwälen, und klickCalculateValues, welche die Werte berechnet. Nach dem Erhalt der Informationen des Front-Ends, führt das Back-End dann jeweils Funktionen aus, die die Werte tauschen, neue aus wählen oder den Wechselkurs und die Döneranzahl berechnen. Zum Schluss sendet es die Berechnungen zurück an das Front-End, welches daraufhin das Anzeigen dieser übernimmt. Die letzten drei Möglichkeiten, die der User hat, sind die graphischen Anpassen, bei denen entweder die Home-Seite  oder die FAQ-Seite angzeigt wird und zwischen Dark- und Light-Mode gwechselt werden kann. Dafür sendet der User eine Nachricht an das Front-End, welches dann die Veränderungen darstellt.
 
-\subsection{grober Entwurf}
+\subsection{grober Designentwurf}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth, frame]{designentwurf}
+	\caption[Designentwurf]{Designentwurf}
+	\label{fig:designentwurf}
+\end{figure}
+
+
 
 \section{Implementierung}
 
@@ -117,6 +122,7 @@ Der wichtigste Punkte innerhalb eines Softwareprojekts sind die verwendete Entwi
 \section{Integration}
 Die Integration in der Softwareentwicklung beschäftigt sich mit den Schnittstellen zwischen den unterschiedlichen Systemkomponenten und der Testung dieser, da es wichtig ist, dass diese miteinander kompatibel sind und bei den Übertragungen der zwischen Komponenten keine Fehler auftreten. Hierzu stehen den entwickelnden Personen diverse Methoden zur Verfügung, von denen eine die Top-Down Integration ist, welche sich dadurch kennzeichnet, das obere Schichten zu erst integriert und die unteren Schichten durch Simulationen dargestellt werden, wodurch die Grundfunktionalitäten erst einmal getestet und validiert werden können, bevor dann im darauffolgenden Schritt die Komponenten zusammengeführt und erneut überprüft werden.\\
 Im Fall von Currency Exchange bedeutete dies, dass im ersten Schritt der User-Client, welcher mit Hilfe von fest eingebauten Werten getestet wurde, und der Webscraper, der die CSV-Datei über einen Port zugänglich macht und überprüft wurde, ob alle Daten richtig sortiert wurden, integriert. Im zweiten Schritt wurde die beiden Komponenten zusammen geführt und bildeten ein neues System, welches dann erneut überarbeitet und getestet worden ist. 
+%TODO Big Bang
 
 \section{Tests}
 Um zu validieren, dass die Software in ihren Funktionen korrekt ist, muss diese ausreichend getestet werden. Dazu müssen die Funktionen, die Persistenz und die Handhabung überprüft werden. Um dies zu bewerkstelligen, wird von Testmethoden Gebrauch gemacht. Da es jedoch kaum möglich ist, alle Bestandteile der Software gleichzeitig zu testen, wird die Überprüfung in mehrere Schichten unterteilt.\\
