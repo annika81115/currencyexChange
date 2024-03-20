@@ -1,5 +1,7 @@
 package com.example.currencyexchange.ui.home;
 
+import static com.example.currencyexchange.CSVReader.getExchangeRates;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +38,10 @@ public class HomeFragment extends Fragment {
     private double exchangeRate = 0;
 
     boolean complicate = false;
+
+    String stringExchangeRate;
+
+    double doenerValue;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -107,27 +113,30 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    private void exchange(View view){
+    private void exchange(View pView){
         input1 = (EditText) getView().findViewById(R.id.input1);
         if (input1.getText().toString().trim().length() > 0) {
-            exchangeRate = calculateExchangeRate(view);
+            exchangeRate = calculateExchangeRate(pView);
             double result = calculate(exchangeRate);
             String result2 = String.valueOf(result);
             setText(R.id.input2, result2);
-            setDoenerValue(result);
+            calculateAndSetDoenerValue(Double.parseDouble(input1.getText().toString()));
             setExplanation(getTextString(R.id.input1) + " " + getSpinner(R.id.firstSpinner) + " entsprechen " + getTextString(R.id.input2) +" " + getSpinner(R.id.secondSpinner) + ".");
         }else {
-            Snackbar.make(view, "Gebe bitte erst eine Zahl ein!", Snackbar.LENGTH_LONG)
+            Snackbar.make(pView, "Gebe bitte erst eine Zahl ein!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
             setText(R.id.input2, "");
         }
     }
 
-    private void setDoenerValue(double pResult) {
-        if (complicate){
-            pResult = pResult/6.5;
+    private void calculateAndSetDoenerValue(double pInput) {
+        int currency1 = getSpinnerPosition(R.id.firstSpinner);
+        if(currency1 == 0) {
+            doenerValue = round(pInput/ 6.5, 2);
+        } else {
+            stringExchangeRate = getExchangeRates().get(currency1 - 1);
+            doenerValue = round(pInput/ Double.parseDouble(stringExchangeRate) / 6.5, 2);
         }
-        double doenerValue = round(pResult/ doenerPrice, 2);
         setDoenerValue(String.valueOf(doenerValue));
     }
 
@@ -149,26 +158,21 @@ public class HomeFragment extends Fragment {
         String stringResult = "0";
         double result = 0;
         double resTwoCurrency = 0;
-        complicate = false;
         int currency1 = getSpinnerPosition(R.id.firstSpinner);
         int currency2 = getSpinnerPosition(R.id.secondSpinner);
-        ArrayList<String> exchangeRates = CSVReader.getExchangeRates();
+        ArrayList<String> exchangeRates = getExchangeRates();
         if (!Objects.equals(currency1, currency2) && currency1 == 0){
             stringResult = exchangeRates.get(currency2 - 1);
             result = Double.parseDouble(stringResult);
-            doenerPrice = 6.5 * result;
         } else if (!Objects.equals(currency1, currency2) && currency2 == 0) {
             String interim = exchangeRates.get(currency1 - 1);
             result = 1 / Double.parseDouble(interim);
             stringResult = String.valueOf(result);
-            doenerPrice = 6.5;
         } else if (!Objects.equals(currency1, currency2)) {
             String firstInterim = exchangeRates.get(currency1-1);
             String secondInterim = exchangeRates.get(currency2-1);
             result = (1/Double.parseDouble(firstInterim)) * Double.parseDouble(secondInterim);
             stringResult = String.valueOf(result);
-            complicate = true;
-            doenerPrice = 6.5 * result;
         } else {
         Snackbar.make(view, "Bitte ändere eine der ausgewählten Währungen.", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
