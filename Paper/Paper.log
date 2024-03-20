@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.15)  20 MAR 2024 19:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.15)  20 MAR 2024 23:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,8 +436,13 @@ File: designentwurf.png Graphic file (type png)
 <use designentwurf.png>
 Package pdftex.def Info: designentwurf.png  used on input line 107.
 (pdftex.def)             Requested size: 126.0pt x 210.6528pt.
- [3 <./designentwurf.png>] [4]
-Underfull \hbox (badness 2050) in paragraph at lines 146--149
+ [3 <./designentwurf.png>]
+Underfull \hbox (badness 3158) in paragraph at lines 136--142
+\OT1/ptm/m/n/10 l[]asst sich aus der in-ter-na-tio-na-len Norm f[]ur Software-
+ []
+
+[4]
+Underfull \hbox (badness 2050) in paragraph at lines 152--155
 \OT1/ptm/m/n/10 Vereinzelt tra-ten Schwie-rig-kei-ten in der Kom-mu-ni-ka-ti-on
 
  []
@@ -453,9 +458,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
-] (Paper.aux)
+[5] (Paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -472,7 +475,7 @@ Here is how much of TeX's memory you used:
 <C:/Users/tobia/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pf
 b><C:/Users/tobia/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on Paper.pdf (5 pages, 82264 bytes).
+Output written on Paper.pdf (5 pages, 84344 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
