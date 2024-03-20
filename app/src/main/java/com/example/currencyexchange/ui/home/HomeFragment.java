@@ -115,7 +115,7 @@ public class HomeFragment extends Fragment {
 
     private void exchange(View pView){
         input1 = (EditText) getView().findViewById(R.id.input1);
-        if (input1.getText().toString().trim().length() > 0) {
+        if (input1.getText().toString().trim().length() > 0 && !input1.getText().toString().trim().equals(".")) {
             exchangeRate = calculateExchangeRate(pView);
             double result = calculate(exchangeRate);
             String result2 = String.valueOf(result);
