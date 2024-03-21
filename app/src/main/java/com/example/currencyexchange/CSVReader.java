@@ -4,34 +4,37 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.currencyexchange.ui.home.HomeFragment;
-
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class CSVReader {
 
     static String csvSplitBy = ",";
-
-    static ArrayList<String> currencies = new ArrayList<>();
-
+    static ArrayList<String> currencies = new ArrayList<String>();
     static ArrayList<String> exchangeRates = new ArrayList<>();
+    static boolean dataLoaded = false;
 
-    public static ArrayList<String> getExchangeRates(){
+    // Method to load CSV data into global variables
+    public static void loadCSVData(Context context, String filePath) {
+        if (!dataLoaded) {
+            parseCSVToArray(context, filePath);
+            dataLoaded = true;
+        }
+    }
+
+    // Method to retrieve exchange rates
+    public static ArrayList<String> getExchangeRates() {
         return exchangeRates;
     }
 
-    public static void readCSVToSpinner(Context context, Spinner spinner, Spinner secondSpinner, String inputStream) {
-
-        currencies.add("Euro");
-        parseCSVtoArray(inputStream);
-
+    // Method to read CSV data and populate spinners
+    public static void readCSVToSpinners(Context context, Spinner spinner, Spinner secondSpinner) {
+        if (!currencies.contains("Euro")) {
+            currencies.add(0, "Euro"); // Add "Euro" to the top of the list
+        }
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
@@ -42,24 +45,25 @@ public class CSVReader {
         secondSpinner.setSelection(1);
     }
 
-    private static void parseCSVtoArray(String pathToFile){
+    // Method to parse CSV data into arrays
+    private static void parseCSVToArray(Context context, String filePath) {
         try {
-            FileInputStream fis = new FileInputStream(pathToFile);
+            FileInputStream fis = new FileInputStream(filePath);
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
 
-            br.readLine();
+            br.readLine(); // Skip header line
 
             String line;
             while ((line = br.readLine()) != null) {
-                String[] daten = line.split(csvSplitBy);
+                String[] data = line.split(csvSplitBy);
 
-                if (daten.length > 2) {
-                    currencies.add(daten[2]);
+                if (data.length > 2) {
+                    currencies.add(data[2]);
                 }
 
-                if (daten.length > 3) {
-                    exchangeRates.add(daten[3]);
+                if (data.length > 3) {
+                    exchangeRates.add(data[3]);
                 }
             }
 

@@ -28,76 +28,68 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private EditText input1;
-
     private EditText input2;
-
     private double doenerPrice = 6.5;
-
     private double exchangeRate = 0;
+    private boolean complicate = false;
 
-    boolean complicate = false;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
+
+    public HomeFragment () {}
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        setupViews();
+        setupListeners();
 
-        binding.changeSymbol.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                changeSides();
-                Snackbar.make(view, "Jetzt wird getauscht.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        binding.submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exchange(view);
-            }
-        });
-
-        binding.firstSpinner.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        calculateExchangeRate(view);
-                    }
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
-
-        binding.secondSpinner.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        calculateExchangeRate(view);
-                    }
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
         return root;
     }
+    private void setupViews() {
+        // Initialize your views here
+        input1 = binding.input1;
+        input2 = binding.input2;
+    }
 
+    private void setupListeners() {
+        binding.changeSymbol.setOnClickListener(view -> {
+            changeSides();
+            Snackbar.make(view, "Jetzt wird getauscht.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        });
 
-    // kommastellen anpassen
-    void setExchangeRate(String pExchangeRate){
-        TextView textView = (TextView) getView().findViewById(R.id.text_home);
+        binding.submitButton.setOnClickListener(view -> exchange(view));
+
+        binding.firstSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                calculateExchangeRate(view);
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        binding.secondSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                calculateExchangeRate(view);
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
+
+    private void setExchangeRate(String pExchangeRate) {
+        TextView textView = binding.textHome;
         textView.setText(TrimDigitsAfterDot(pExchangeRate));
     }
 
-    void setExplanation(String pExplanation){
-        TextView textView = (TextView) getView().findViewById(R.id.text_explanation);
+    private void setExplanation(String pExplanation) {
+        TextView textView = binding.textExplanation;
         textView.setText(pExplanation);
     }
 
-    void setDoenerValue(String pDoenerValue){
-        TextView textView = (TextView) getView().findViewById(R.id.text_doener);
+    private void setDoenerValue(String pDoenerValue) {
+        TextView textView = binding.textDoener;
         textView.setText("Der eingegebene Wert entspricht ca. " + pDoenerValue + " Döner zu einem Preis von 6.50 Euro.");
     }
 
@@ -175,12 +167,6 @@ public class HomeFragment extends Fragment {
         setExchangeRate(stringResult);
         return result;
     }
-
-    public void setSpinner(int pSpinnerId, int pInput){
-        Spinner spinner = (Spinner) getView().findViewById(pSpinnerId);
-        spinner.setSelection(pInput);
-    }
-
     public void setSpinner(int pSpinnerId, String pInput){
         Spinner spinner = (Spinner) getView().findViewById(pSpinnerId);
         ArrayAdapter myAdapter = (ArrayAdapter) spinner.getAdapter(); //cast to an ArrayAdapter
