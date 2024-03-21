@@ -2,6 +2,8 @@ package com.example.currencyexchange.ui.home;
 
 import static com.example.currencyexchange.CSVReader.getExchangeRates;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +15,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.currencyexchange.CSVReader;
+import com.example.currencyexchange.MainActivity;
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,6 +49,8 @@ public class HomeFragment extends Fragment {
 
     double doenerValue;
 
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -62,6 +70,7 @@ public class HomeFragment extends Fragment {
                         .setAction("Action", null).show();
             }
         });
+
 
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +105,8 @@ public class HomeFragment extends Fragment {
         TextView textView = (TextView) getView().findViewById(R.id.text_home);
         textView.setText(TrimDigitsAfterDot(pExchangeRate));
     }
+
+
 
     void setExplanation(String pExplanation){
         TextView textView = (TextView) getView().findViewById(R.id.text_explanation);

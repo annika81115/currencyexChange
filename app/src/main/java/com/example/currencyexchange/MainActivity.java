@@ -44,12 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
     public String firstSpinnerText;
 
-
     public EditText input1;
     public EditText input2;
 
-    SwitchCompat switchMode;
     boolean nightMode;
+
+    SwitchCompat switchMode;
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -66,11 +67,25 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setDarkModeSettings();
-
         String pathToFile = MainActivity.this.getFilesDir() + "/values.csv";
         CSVReader.readCSVToSpinner(this, findViewById(R.id.firstSpinner), findViewById(R.id.secondSpinner), pathToFile);
 
+        setDarkModeSettings();
+
+
+        setSupportActionBar(binding.appBarMain.toolbar);
+
+        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery)
+                .setOpenableLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
         switchMode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,21 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 editor.apply();
             }
         });
-
-        setSupportActionBar(binding.appBarMain.toolbar);
-
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery)
-                .setOpenableLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
     }
 
     private void fix() {
@@ -124,18 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setDarkModeSettings() {
-        switchMode = findViewById(R.id.switchMode);
-
-        sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE);
-        nightMode = sharedPreferences.getBoolean("nightMode", false);
-
-        if (nightMode) {
-            switchMode.setChecked(true);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,18 +139,17 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    private void setSpinner(int pID) {
-        Spinner secondSpinner = (Spinner) findViewById(pID);
-        // Create an ArrayAdapter using the string array and a default spinner layout.
-        ArrayAdapter<CharSequence> secondSpinnerAdapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.currency,
-                android.R.layout.simple_spinner_item
-        );
-        // Specify the layout to use when the list of choices appears.
-        secondSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner.
-        secondSpinner.setAdapter(secondSpinnerAdapter);
+    private void setDarkModeSettings() {
+        switchMode = findViewById(R.id.switchMode);
+
+        //FragmentActivity mainActivity = requireActivity();
+        sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean("nightMode", false);
+
+        if (nightMode) {
+            switchMode.setChecked(true);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
     }
 
     public void readAndPrintCsvFile() {

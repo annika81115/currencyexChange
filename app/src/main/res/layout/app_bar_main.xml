@@ -29,16 +29,6 @@
         app:layout_anchorGravity="top|center"
         app:popupTheme="@style/Theme.CurrencyexChange.PopupOverlay" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/switchMode"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="30dp"
-        android:thumb="@drawable/thumb"
-        app:track="@drawable/track"
-        android:layout_gravity="end"
-        app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
