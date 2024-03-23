@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.15)  22 MAR 2024 18:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.15)  24 MAR 2024 00:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,13 +436,172 @@ File: designentwurf.png Graphic file (type png)
 <use designentwurf.png>
 Package pdftex.def Info: designentwurf.png  used on input line 110.
 (pdftex.def)             Requested size: 126.0pt x 210.6528pt.
- [3 <./designentwurf.png>]
-Underfull \hbox (badness 3158) in paragraph at lines 139--145
-\OT1/ptm/m/n/10 l[]asst sich aus der in-ter-na-tio-na-len Norm f[]ur Software-
+ [3 <./designentwurf.png>] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
+[]\OT1/ptm/m/n/10 In der in-ter-na-tio-na-len Norm f[]ur Software-
  []
 
-[4]
-Underfull \hbox (badness 2050) in paragraph at lines 155--159
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 Lebenszyklusprozesse (ISO / IEC 12207), sind vor
+ []
+
+
+Underfull \hbox (badness 1424) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 al-lem die Haupt-punk-te In-be-trieb-nah-me und War-tung als
+ []
+
+
+Underfull \hbox (badness 6157) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 be-son-ders wich-tig her-vor-ge-ho-ben. Dem-nach besch[]aftigt
+ []
+
+
+Underfull \hbox (badness 2478) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 Nut-zer []uber die Hand-ha-bung der ein-zel-nen Funk-tio-nen
+ []
+
+
+Underfull \hbox (badness 2818) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 in ver-schie-de-ne Ar-ten un-ter-teilt: Die ad-ap-ti-ve War-tun
+g
+ []
+
+
+Underfull \hbox (badness 3668) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 besch[]aftigt sich bei-spiels-wei-se mit der An-pas-sung der
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 z[]ahlt et-wa das An-zei-gen der ver-gan-ge-nen Wech-sel-kur-se
+
+ []
+
+
+Underfull \hbox (badness 2012) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 so k[]onnen ver-wen-de-te Me-tho-den ver-al-ten, wo-durch die
+ []
+
+
+Underfull \hbox (badness 1565) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 und Ver-bes-se-rung des Quell-co-des kann dem vor-ge-beugt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 Sollte zu ei-nem Zeit-punkt auf-fal-len, dass die
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 soll der Quell-co-de so op-ti-miert wer-den, dass sich die
+ []
+
+
+Underfull \hbox (badness 2426) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 Feh-ler, um zum Bei-spiel den Ab-sturz der Ap-pli-ka-ti-on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 Ver-si-on Feh-ler exis-tie-ren, die schwer-wie-gen-de Feh-ler
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 146--153
+\OT1/ptm/m/n/10 wel-cher un-mit-tel-bar nach Bet[]atigung des Knop-fes zum
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 kom-pli-ka-ti-ons-los und erf[]ullt al-le Grun-dan-for-de-run-g
+en,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 so-wie ver-ein-zelt op-tio-na-le funk-tio-na-le An-for-de-run-g
+en.
+ []
+
+
+Underfull \hbox (badness 1642) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Dar-un-ter f[]allt die Be-rech-nung in D[]oner. Das Ab-zie-hen
+ []
+
+
+Underfull \hbox (badness 5403) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Herausforderungen brach-te vor al-lem das De-sign des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Fron-tends der App. W[]ahrend der Im-ple-men-tie-rung
+ []
+
+
+Underfull \hbox (badness 1540) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 wur-de fest-ge-stellt, dass ei-ni-ge Funk-tio-nen in-ner-halb d
+er
+ []
+
+
+Underfull \hbox (badness 2173) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 sehr []uberladenen und un[]ubersichtlichen Ober-fl[]ache. Auf
+ []
+
+
+Underfull \hbox (badness 4492) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Be-deu-tung der ein-zel-nen Wer-te ver-deut-li-chen und f[]ur
+ []
+
+
+Underfull \hbox (badness 3758) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Be-nut-ze-ro-ber-fl[]ache sehr voll, wo-durch ei-ni-ge Ele-men-
+te
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Mit der fort-schrei-ten-den Im-ple-men-tie-rung wei-te-rer
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 W[]ahrungen, ent-stand ei-ne un[]ubersichtliche Lis-te, wel-che
+
+ []
+
+
+Underfull \hbox (badness 6775) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 die Aus-wahl beim Su-chen ei-ner spe-zi-el-len W[]ahrung
+ []
+
+
+Underfull \hbox (badness 4378) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 zu l[]osen, k[]onnte ei-ne Such-funk-ti-on in-te-griert wer-den
+.
+ []
+
+
+Underfull \hbox (badness 5939) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Als Un-terst[]utzung der Nut-zen-den wur-de vor-erst ei-ne
+ []
+
+
+Underfull \hbox (badness 4805) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Art der Sor-tie-rung vor-ge-nom-men, bei der zu-erst die
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 156--160
+\OT1/ptm/m/n/10 Durch im-mer wie-der-keh-ren-de Ver-bes-se-rungsm[]oglichkeiten
+
+ []
+
+[5]
+Underfull \hbox (badness 2050) in paragraph at lines 162--166
 \OT1/ptm/m/n/10 Vereinzelt tra-ten Schwie-rig-kei-ten in der Kom-mu-ni-ka-ti-on
 
  []
@@ -458,7 +617,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5] (Paper.aux)
+[6] (Paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -467,7 +626,7 @@ L3 programming layer <2024-01-04>
 Here is how much of TeX's memory you used:
  6537 strings out of 474486
  109119 string characters out of 5743755
- 1947542 words of memory out of 5000000
+ 1948542 words of memory out of 5000000
  28731 multiletter control sequences out of 15000+600000
  590565 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -475,9 +634,9 @@ Here is how much of TeX's memory you used:
 <C:/Users/tobia/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pf
 b><C:/Users/tobia/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on Paper.pdf (5 pages, 84640 bytes).
+Output written on Paper.pdf (6 pages, 88808 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
+ 35 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
