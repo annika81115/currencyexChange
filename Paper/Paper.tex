@@ -15,7 +15,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Phasen, Techniken und Strategien der Softwareentwicklung an Hand einesKursprojekts im Modul SWE-II}
+\title{Phasen, Techniken und Strategien der Softwareentwicklung an Hand eines Kursprojekts im Modul SWE-II}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Matz, Annika}
 \IEEEauthorblockA{
@@ -42,13 +42,16 @@ s\_reetz22@stud.hwr-berlin.de}
 
 \maketitle
 
+\begin{abstract}
+	In diesem Paper soll die Implementierung der Android-Applikation „Currency Exchange“ erläutert werden. Dazu wird Schritt für Schritt die Planung und Implementierung der Software beschrieben. Zuerst wurde eine Anforderungsanalyse erstellt, in welcher  die nicht-/ funktionalen und optionalen Funktionen aufgelistet wurden. In der darauffolgenden Entwurfsphase wurde das grundlegendes Design sowie die Softwarearchitektur erarbeitet. Die tatsächliche Entwicklung der Anwendung fand in der Implementierungsphase statt. In dieser wurden bereits einige Tests ausgeführt und fehlerhafter Quellcode überarbeitet. Die finale Validierung erfolge anschließend in der Testphase, in welcher verschiedene konventionelle, teils unkonventionelle Testmethoden angewendet wurden. Die Software konnte erfolgreich implementiert werden und der Rollout-Prozess, beziehungsweise die dazugehörige Wartung wird im hinteren Teil des Papers thematisiert. Die Erkenntnisse, die während der Entwicklung gewonnen wurden, sind in den Kapiteln „Ergebnisse“ und „Abschluss“ dargelegt.
+\end{abstract}
 
 \section{Disclaimer}
 Aus Gründen der besseren Lesbarkeit wird auf die gleichzeitige Verwendung der Sprachformen männlich, weibich und divers (m/w/d) verzichtet. Sämtliche Personenbezeichnungen gelten gleichermaßen für alle Geschlechter.
 
 \section{Einführung}
-Innerhalb des dualen Studiums der Informatik an der "Hochschule für Wirtschaft und Recht", fand das Modul Software-Engineering 2 statt. Ziel dieses ist die Entwicklung von Software zu vermitteln und das erlernte Wissen, innerhalb einer Projektarbeit anzuwenden. Dabei wird auf die Grundlagen des Projektmanagments geachtet, wofür z.B. UML-Diagrammen angefertigt werden. Zur Dokumentation des Projektes wird ein Paper angefertigt. 
-Innerhalb des Moduls werden auch Softskills gefördert, z.B. die Präsentationsfähigkeiten oder die Sozialkompetenzen innerhalb von Gruppenarbeiten.
+Innerhalb des dualen Studiums der Informatik an der "Hochschule für Wirtschaft und Recht", fand das Modul Software-Engineering 2 statt. Ziel dieses ist die Entwicklung von Software zu vermitteln und das erlernte Wissen, innerhalb einer Projektarbeit anzuwenden. Dabei wird auf die Grundlagen des Projektmanagments geachtet, wofür zum Beispiel UML-Diagrammen angefertigt werden. Zur Dokumentation des Projektes wird ein Paper angefertigt. 
+Innerhalb des Moduls werden auch Softskills gefördert, zum Beispiel die Präsentationsfähigkeiten oder die Sozialkompetenzen innerhalb von Gruppenarbeiten.
 
 \section{Idee des Projektes}
 Ein sehr großer Teil unseres Lebens dreht sich um das erwerben von unterschiedlichen Materiellen Gütern. Für unserer Arbeit werden wir vergütet, im Supermarkt kaufen wir davon unser Abendessen und an den Wochenenden und im Urlaub gehen wir auf Reisen. Auf diesen müssen wir uns in einer fremden Kultur zu Recht finden und konsumieren weitere Güter. Doch wie können wir einen Wert von diesen einschätzen, wenn wir die Währung nicht kennen? Genau dieses Problem löst die App "Currency Exchange". Einfaches nachschlagen von tagesaktuellen Wechselkursen und umrechnen zwischen verschiedenen Währungen. Ein besonderes Feature ist das Umwandeln des eingegebenen Wertes in die Anzahl von Döner, welche damit gekauft werden könnten. Dies soll das Gefühl für den Wert des jeweiligen Betrages schulen.\\
